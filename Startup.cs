@@ -70,14 +70,12 @@ namespace Lethal.Developer
             });
 
 
-            // This will add "Libs" as another valid static content location
+            // This will add "src" as another valid static content location
             app.UseStaticFiles(new StaticFileOptions()
             {
                 FileProvider = new PhysicalFileProvider(
                      Path.Combine(Directory.GetCurrentDirectory(), @"src")),
                 RequestPath = new PathString("/src")
-
-
             });
 
         }
