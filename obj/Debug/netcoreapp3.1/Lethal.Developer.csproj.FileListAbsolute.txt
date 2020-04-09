@@ -161,3 +161,5 @@ C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.D
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutBackup.cshtml.g.cs
+C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Question\Index.cshtml.g.cs
+C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Exam\Index.cshtml.g.cs
