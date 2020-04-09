@@ -82,9 +82,6 @@ C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.D
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\package-lock.json
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\package.json
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\src\vendor\fontawesome-free\package.json
-C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\startbootstrap-sb-admin-2-gh-pages\package-lock.json
-C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\startbootstrap-sb-admin-2-gh-pages\package.json
-C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\startbootstrap-sb-admin-2-gh-pages\vendor\fontawesome-free\package.json
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
@@ -163,3 +160,9 @@ C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.D
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutBackup.cshtml.g.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Question\Index.cshtml.g.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Exam\Index.cshtml.g.cs
+C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\theme-styleguide\vendor\fontawesome-free\package.json
+C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\src\vendor\ckeditor4\bower.json
+C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\src\vendor\ckeditor4\composer.json
+C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\src\vendor\ckeditor4\package.json
+C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\src\vendor\ckeditor4\plugins\emoji\emoji.json
+C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\src\vendor\ckeditor4\samples\toolbarconfigurator\font\config.json
