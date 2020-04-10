@@ -7,17 +7,18 @@ using System.Threading.Tasks;
 
 namespace Lethal.Developer.Models
 {
-    public class Topic
+    public class Result
     {
         public int Id { get; set; }
         public Guid UserId { get; set; }
-        public string Name { get; set; }
+        public int TopicId { get; set; }
+        public float Score { get; set; }
         public DateTime CreatedDate { get; set; }
 
         [ForeignKey("UserId")]
         public IdentityUser User { get; set; }
 
-        public ICollection<Question> Questions { get; set; }
-        public ICollection<Theory> Theory { get; set; }
+        [ForeignKey("TopicId")]
+        public Topic Topic { get; set; }
     }
 }

@@ -157,7 +157,6 @@ C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\zh-Hant\
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.csproj.CoreCompileInputs.cache
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutBackup.cshtml.g.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Question\Index.cshtml.g.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Exam\Index.cshtml.g.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\theme-styleguide\vendor\fontawesome-free\package.json

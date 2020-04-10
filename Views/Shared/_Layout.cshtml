@@ -120,28 +120,29 @@
         <!-- End of Sidebar -->
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-            <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light bg-primary topbar mb-4 static-top shadow">
-                <partial name="_LoginPartial" />
-            </nav>
-            <!-- End of Topbar -->
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-primary topbar mb-4 static-top shadow">
+                    <partial name="_LoginPartial" />
+                </nav>
+                <!-- End of Topbar -->
 
                 @RenderBody()
             </div>
         </div>
     </div>
     <!-- End of Page Wrapper -->
-
     @*<footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Your Website 2019</span>
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2019</span>
+                </div>
             </div>
-        </div>
-    </footer>*@
+        </footer>*@
     <!-- Bootstrap core JavaScript-->
-    <script src="~/src/vendor/jquery/jquery.min.js"></script>
 
+     @RenderSection("Scripts", required: false)
+
+    <script src="~/src/vendor/jquery/jquery.min.js"></script>
     <script src="~/src/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->

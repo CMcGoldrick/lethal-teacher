@@ -21,18 +21,41 @@ namespace Lethal.Developer.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Topic>(topic =>
+            modelBuilder.Entity<Topic>(entity =>
             {
-                //TODO: need to determine the right way for setting up these relationships
+                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.UserId).HasColumnName("UserID");
 
-                //topic
-                //    .Property(n => n.UserId).IsRequired();
+                entity.Property(n => n.UserId).IsRequired();
 
-                topic.HasData(
-                    new Topic { Id = 1, Name = "Data Structures" }
+                entity.HasData(
+                        new Topic { Id = 1, Name = "Data Structures", UserId = Guid.Parse("9776506B-8CFE-448F-1BF5-08D7DCE61A3B"), CreatedDate = DateTime.Now  }
                     );
             });
-        }
 
+            modelBuilder.Entity<Question>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.UserId).HasColumnName("UserID");
+                
+                entity.Property(n => n.UserId).IsRequired();
+            });
+
+            modelBuilder.Entity<Result>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.UserId).HasColumnName("UserID");
+                entity.Property(n => n.UserId).IsRequired();
+
+            });
+
+            modelBuilder.Entity<Theory>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.UserId).HasColumnName("UserID");
+
+                entity.Property(n => n.UserId).IsRequired();
+            });
+        }
     }
 }
