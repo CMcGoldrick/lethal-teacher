@@ -181,17 +181,108 @@ namespace Lethal.Developer.Migrations
                 name: "Topics",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: true)
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    UserId1 = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Topics", x => x.Id);
+                    table.PrimaryKey("PK_Topics", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Topics_IdentityUser_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Topics_IdentityUser_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "IdentityUser",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Question",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<Guid>(nullable: false),
+                    TopicId = table.Column<int>(nullable: false),
+                    Q = table.Column<string>(type: "NVARCHAR(MAX)", nullable: true),
+                    A = table.Column<string>(type: "NVARCHAR(MAX)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    UserId1 = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Question", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Question_Topics_TopicId",
+                        column: x => x.TopicId,
+                        principalTable: "Topics",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Question_IdentityUser_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "IdentityUser",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Result",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<Guid>(nullable: false),
+                    TopicId = table.Column<int>(nullable: false),
+                    Score = table.Column<float>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    UserId1 = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Result", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Result_Topics_TopicId",
+                        column: x => x.TopicId,
+                        principalTable: "Topics",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Result_IdentityUser_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "IdentityUser",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Theory",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<Guid>(nullable: false),
+                    TopicId = table.Column<int>(nullable: false),
+                    Subject = table.Column<string>(nullable: true),
+                    Content = table.Column<string>(type: "NVARCHAR(MAX)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    UserId1 = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Theory", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Theory_Topics_TopicId",
+                        column: x => x.TopicId,
+                        principalTable: "Topics",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Theory_IdentityUser_UserId1",
+                        column: x => x.UserId1,
                         principalTable: "IdentityUser",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -199,8 +290,8 @@ namespace Lethal.Developer.Migrations
 
             migrationBuilder.InsertData(
                 table: "Topics",
-                columns: new[] { "Id", "Name", "UserId" },
-                values: new object[] { 1, "Data Structures", null });
+                columns: new[] { "ID", "CreatedDate", "Name", "UserID", "UserId1" },
+                values: new object[] { 1, new DateTime(2020, 4, 9, 22, 29, 49, 565, DateTimeKind.Local).AddTicks(1001), "Data Structures", new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b"), null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -242,9 +333,39 @@ namespace Lethal.Developer.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Topics_UserId",
+                name: "IX_Question_TopicId",
+                table: "Question",
+                column: "TopicId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Question_UserId1",
+                table: "Question",
+                column: "UserId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Result_TopicId",
+                table: "Result",
+                column: "TopicId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Result_UserId1",
+                table: "Result",
+                column: "UserId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Theory_TopicId",
+                table: "Theory",
+                column: "TopicId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Theory_UserId1",
+                table: "Theory",
+                column: "UserId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Topics_UserId1",
                 table: "Topics",
-                column: "UserId");
+                column: "UserId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -265,13 +386,22 @@ namespace Lethal.Developer.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Topics");
+                name: "Question");
+
+            migrationBuilder.DropTable(
+                name: "Result");
+
+            migrationBuilder.DropTable(
+                name: "Theory");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Topics");
 
             migrationBuilder.DropTable(
                 name: "IdentityUser");

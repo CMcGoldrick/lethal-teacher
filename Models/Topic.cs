@@ -14,7 +14,7 @@ namespace Lethal.Developer.Models
         public string Name { get; set; }
         public DateTime CreatedDate { get; set; }
 
-        [ForeignKey("UserId")]
+        //[ForeignKey("UserId")]
         public IdentityUser User { get; set; }
 
         public ICollection<Question> Questions { get; set; }

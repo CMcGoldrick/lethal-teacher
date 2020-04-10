@@ -10,12 +10,20 @@ namespace Lethal.Developer.Data
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser<Guid>, IdentityRole<Guid>, Guid>
     {
+        public ApplicationDbContext()
+        {
+
+        }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
         
         public DbSet<Topic> Topics { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Theory> Theory { get; set; }
+        public DbSet<Result> Results { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,7 +32,6 @@ namespace Lethal.Developer.Data
             modelBuilder.Entity<Topic>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
-                entity.Property(e => e.UserId).HasColumnName("UserID");
 
                 entity.Property(n => n.UserId).IsRequired();
 
@@ -36,7 +43,6 @@ namespace Lethal.Developer.Data
             modelBuilder.Entity<Question>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
-                entity.Property(e => e.UserId).HasColumnName("UserID");
                 
                 entity.Property(n => n.UserId).IsRequired();
             });
@@ -44,7 +50,6 @@ namespace Lethal.Developer.Data
             modelBuilder.Entity<Result>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
-                entity.Property(e => e.UserId).HasColumnName("UserID");
                 entity.Property(n => n.UserId).IsRequired();
 
             });
@@ -52,7 +57,6 @@ namespace Lethal.Developer.Data
             modelBuilder.Entity<Theory>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
-                entity.Property(e => e.UserId).HasColumnName("UserID");
 
                 entity.Property(n => n.UserId).IsRequired();
             });

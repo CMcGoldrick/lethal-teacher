@@ -15,7 +15,7 @@ namespace Lethal.Developer.Models
         public float Score { get; set; }
         public DateTime CreatedDate { get; set; }
 
-        [ForeignKey("UserId")]
+        //[ForeignKey("UserId")]
         public IdentityUser User { get; set; }
 
         [ForeignKey("TopicId")]

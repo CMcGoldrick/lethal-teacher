@@ -15,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Lethal.Developer.DataAccess.Interfaces;
+using Lethal.Developer.DataAccess.Services;
 
 namespace Lethal.Developer
 {
@@ -33,10 +35,16 @@ namespace Lethal.Developer
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser<Guid>>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddScoped<ITopicRepository, TopicRepository>();
+            services.AddScoped<IQuestionRepository, QuestionRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
