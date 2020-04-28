@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lethal.Developer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200410032949_Initial")]
-    partial class Initial
+    [Migration("20200428004027_InitialPoop")]
+    partial class InitialPoop
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,19 +42,15 @@ namespace Lethal.Developer.Migrations
                         .HasColumnType("int");
 
                     b.Property<Guid>("UserId")
-                        .HasColumnName("UserID")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("TopicId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
-                    b.ToTable("Question");
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("Lethal.Developer.Models.Result", b =>
@@ -75,19 +71,15 @@ namespace Lethal.Developer.Migrations
                         .HasColumnType("int");
 
                     b.Property<Guid>("UserId")
-                        .HasColumnName("UserID")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("TopicId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
-                    b.ToTable("Result");
+                    b.ToTable("Results");
                 });
 
             modelBuilder.Entity("Lethal.Developer.Models.Theory", b =>
@@ -111,17 +103,13 @@ namespace Lethal.Developer.Migrations
                         .HasColumnType("int");
 
                     b.Property<Guid>("UserId")
-                        .HasColumnName("UserID")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("TopicId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Theory");
                 });
@@ -141,15 +129,11 @@ namespace Lethal.Developer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("UserId")
-                        .HasColumnName("UserID")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Topics");
 
@@ -157,8 +141,22 @@ namespace Lethal.Developer.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2020, 4, 9, 22, 29, 49, 565, DateTimeKind.Local).AddTicks(1001),
+                            CreatedDate = new DateTime(2020, 4, 27, 19, 40, 27, 41, DateTimeKind.Local).AddTicks(6268),
                             Name = "Data Structures",
+                            UserId = new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b")
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2020, 4, 27, 19, 40, 27, 44, DateTimeKind.Local).AddTicks(3708),
+                            Name = "C#",
+                            UserId = new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b")
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2020, 4, 27, 19, 40, 27, 44, DateTimeKind.Local).AddTicks(3766),
+                            Name = "ASP.NET",
                             UserId = new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b")
                         });
                 });
@@ -214,58 +212,6 @@ namespace Lethal.Developer.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("IdentityUser");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", b =>
                 {
                     b.Property<Guid>("Id")
@@ -277,6 +223,10 @@ namespace Lethal.Developer.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -330,6 +280,8 @@ namespace Lethal.Developer.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser<Guid>");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
@@ -414,6 +366,32 @@ namespace Lethal.Developer.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Lethal.Developer.Models.ApplicationUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>");
+
+                    b.HasDiscriminator().HasValue("ApplicationUser");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "",
+                            Email = "mcgoldrick.development@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "mcgoldrick.development@gmail.com",
+                            NormalizedUserName = "ciaranmcgold",
+                            PasswordHash = "5f4dcc3b5aa765d61d8327deb882cf99",
+                            PhoneNumber = "3127850089",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "ciaranmcgold"
+                        });
+                });
+
             modelBuilder.Entity("Lethal.Developer.Models.Question", b =>
                 {
                     b.HasOne("Lethal.Developer.Models.Topic", "Topic")
@@ -422,9 +400,10 @@ namespace Lethal.Developer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1");
+                    b.HasOne("Lethal.Developer.Models.ApplicationUser", "User")
+                        .WithMany("Questions")
+                        .HasForeignKey("UserId")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Lethal.Developer.Models.Result", b =>
@@ -435,9 +414,10 @@ namespace Lethal.Developer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1");
+                    b.HasOne("Lethal.Developer.Models.ApplicationUser", "User")
+                        .WithMany("Results")
+                        .HasForeignKey("UserId")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Lethal.Developer.Models.Theory", b =>
@@ -448,16 +428,18 @@ namespace Lethal.Developer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1");
+                    b.HasOne("Lethal.Developer.Models.ApplicationUser", "User")
+                        .WithMany("Theory")
+                        .HasForeignKey("UserId")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Lethal.Developer.Models.Topic", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1");
+                    b.HasOne("Lethal.Developer.Models.ApplicationUser", "User")
+                        .WithMany("Topics")
+                        .HasForeignKey("UserId")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

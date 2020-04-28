@@ -19,8 +19,8 @@ namespace Lethal.Developer.Models
 
         public DateTime CreatedDate { get; set; }
 
-        //[ForeignKey("UserId")]
-        public IdentityUser User { get; set; }
+        [ForeignKey("UserId")]
+        public ApplicationUser User { get; set; }
 
         [ForeignKey("TopicId")]
         public Topic Topic { get; set; }

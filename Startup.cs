@@ -17,6 +17,9 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using Lethal.Developer.DataAccess.Interfaces;
 using Lethal.Developer.DataAccess.Services;
+using Lethal.Developer.ViewProviders.Interfaces;
+using Lethal.Developer.ViewProviders.Services;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 namespace Lethal.Developer
 {
@@ -41,9 +44,21 @@ namespace Lethal.Developer
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+                //.AddRazorPagesOptions(options =>
+                //{
+                //    options.RootDirectory = "/Question";
 
+                //    options.Conventions.AddPageRoute("/Question/Create", "createquestion");
+                //});
+
+
+            // repository services 
             services.AddScoped<ITopicRepository, TopicRepository>();
             services.AddScoped<IQuestionRepository, QuestionRepository>();
+
+            // provider services
+            services.AddScoped<ITopicProvider, TopicProvider>();
+            //services.AddScoped<IQuestionProvider, QuestionProvider>();
 
         }
 
@@ -87,5 +102,7 @@ namespace Lethal.Developer
             });
 
         }
+
+
     }
 }

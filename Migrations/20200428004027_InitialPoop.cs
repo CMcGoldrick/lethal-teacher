@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Lethal.Developer.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialPoop : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,36 +39,12 @@ namespace Lethal.Developer.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    Discriminator = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "IdentityUser",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    UserName = table.Column<string>(nullable: true),
-                    NormalizedUserName = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    NormalizedEmail = table.Column<string>(nullable: true),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
-                    PasswordHash = table.Column<string>(nullable: true),
-                    SecurityStamp = table.Column<string>(nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IdentityUser", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -183,77 +159,74 @@ namespace Lethal.Developer.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<Guid>(nullable: false),
+                    UserId = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
-                    CreatedDate = table.Column<DateTime>(nullable: false),
-                    UserId1 = table.Column<string>(nullable: true)
+                    CreatedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Topics", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Topics_IdentityUser_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "IdentityUser",
+                        name: "FK_Topics_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Question",
+                name: "Questions",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<Guid>(nullable: false),
+                    UserId = table.Column<Guid>(nullable: false),
                     TopicId = table.Column<int>(nullable: false),
                     Q = table.Column<string>(type: "NVARCHAR(MAX)", nullable: true),
                     A = table.Column<string>(type: "NVARCHAR(MAX)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(nullable: false),
-                    UserId1 = table.Column<string>(nullable: true)
+                    CreatedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Question", x => x.ID);
+                    table.PrimaryKey("PK_Questions", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Question_Topics_TopicId",
+                        name: "FK_Questions_Topics_TopicId",
                         column: x => x.TopicId,
                         principalTable: "Topics",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Question_IdentityUser_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "IdentityUser",
+                        name: "FK_Questions_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Result",
+                name: "Results",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<Guid>(nullable: false),
+                    UserId = table.Column<Guid>(nullable: false),
                     TopicId = table.Column<int>(nullable: false),
                     Score = table.Column<float>(nullable: false),
-                    CreatedDate = table.Column<DateTime>(nullable: false),
-                    UserId1 = table.Column<string>(nullable: true)
+                    CreatedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Result", x => x.ID);
+                    table.PrimaryKey("PK_Results", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Result_Topics_TopicId",
+                        name: "FK_Results_Topics_TopicId",
                         column: x => x.TopicId,
                         principalTable: "Topics",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Result_IdentityUser_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "IdentityUser",
+                        name: "FK_Results_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -264,12 +237,11 @@ namespace Lethal.Developer.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<Guid>(nullable: false),
+                    UserId = table.Column<Guid>(nullable: false),
                     TopicId = table.Column<int>(nullable: false),
                     Subject = table.Column<string>(nullable: true),
                     Content = table.Column<string>(type: "NVARCHAR(MAX)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(nullable: false),
-                    UserId1 = table.Column<string>(nullable: true)
+                    CreatedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -281,17 +253,32 @@ namespace Lethal.Developer.Migrations
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Theory_IdentityUser_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "IdentityUser",
+                        name: "FK_Theory_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b"), 0, "", "ApplicationUser", "mcgoldrick.development@gmail.com", true, false, null, "mcgoldrick.development@gmail.com", "ciaranmcgold", "5f4dcc3b5aa765d61d8327deb882cf99", "3127850089", false, "", false, "ciaranmcgold" });
+
+            migrationBuilder.InsertData(
                 table: "Topics",
-                columns: new[] { "ID", "CreatedDate", "Name", "UserID", "UserId1" },
-                values: new object[] { 1, new DateTime(2020, 4, 9, 22, 29, 49, 565, DateTimeKind.Local).AddTicks(1001), "Data Structures", new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b"), null });
+                columns: new[] { "ID", "CreatedDate", "Name", "UserId" },
+                values: new object[] { 1, new DateTime(2020, 4, 27, 19, 40, 27, 41, DateTimeKind.Local).AddTicks(6268), "Data Structures", new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b") });
+
+            migrationBuilder.InsertData(
+                table: "Topics",
+                columns: new[] { "ID", "CreatedDate", "Name", "UserId" },
+                values: new object[] { 2, new DateTime(2020, 4, 27, 19, 40, 27, 44, DateTimeKind.Local).AddTicks(3708), "C#", new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b") });
+
+            migrationBuilder.InsertData(
+                table: "Topics",
+                columns: new[] { "ID", "CreatedDate", "Name", "UserId" },
+                values: new object[] { 3, new DateTime(2020, 4, 27, 19, 40, 27, 44, DateTimeKind.Local).AddTicks(3766), "ASP.NET", new Guid("9776506b-8cfe-448f-1bf5-08d7dce61a3b") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -333,24 +320,24 @@ namespace Lethal.Developer.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Question_TopicId",
-                table: "Question",
+                name: "IX_Questions_TopicId",
+                table: "Questions",
                 column: "TopicId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Question_UserId1",
-                table: "Question",
-                column: "UserId1");
+                name: "IX_Questions_UserId",
+                table: "Questions",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Result_TopicId",
-                table: "Result",
+                name: "IX_Results_TopicId",
+                table: "Results",
                 column: "TopicId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Result_UserId1",
-                table: "Result",
-                column: "UserId1");
+                name: "IX_Results_UserId",
+                table: "Results",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Theory_TopicId",
@@ -358,14 +345,14 @@ namespace Lethal.Developer.Migrations
                 column: "TopicId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Theory_UserId1",
+                name: "IX_Theory_UserId",
                 table: "Theory",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Topics_UserId1",
+                name: "IX_Topics_UserId",
                 table: "Topics",
-                column: "UserId1");
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -386,10 +373,10 @@ namespace Lethal.Developer.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Question");
+                name: "Questions");
 
             migrationBuilder.DropTable(
-                name: "Result");
+                name: "Results");
 
             migrationBuilder.DropTable(
                 name: "Theory");
@@ -398,13 +385,10 @@ namespace Lethal.Developer.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "Topics");
 
             migrationBuilder.DropTable(
-                name: "IdentityUser");
+                name: "AspNetUsers");
         }
     }
 }

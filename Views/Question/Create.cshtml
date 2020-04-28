@@ -1,0 +1,39 @@
+﻿@*@page "/createquestion"*@
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h3>Manufacture your own questions and be your own teacher</h3>
+
+<span>Select Your Topic</span>
+
+<div id="topics"></div>
+
+
+
+
+@*TODO: Code snippet plugin https://ckeditor.com/cke4/addon/codesnippet*@
+<form>
+    <textarea name="editor1" id="editor1" rows="10" cols="80">
+                This is my textarea to be replaced with CKEditor.
+            </textarea>
+    <script>
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('editor1');
+    </script>
+</form>
+
+
+<script>
+    $(document).ready(function() {
+    var url = "@Url.Action("Index","Topic")";
+
+        $.get(url, function (data) {
+            $('#topics').html(data);
+        });
+    });
+</script>

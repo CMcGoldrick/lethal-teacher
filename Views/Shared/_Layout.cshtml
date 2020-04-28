@@ -14,6 +14,8 @@
     <link href="~/src/css/sb-admin-2.css" rel="stylesheet">
 
     <script src="~/src/vendor/ckeditor4/ckeditor.js"></script>
+    <script src="~/src/vendor/jquery/jquery.min.js"></script>
+
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -140,13 +142,15 @@
         </footer>*@
     <!-- Bootstrap core JavaScript-->
 
-     @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 
-    <script src="~/src/vendor/jquery/jquery.min.js"></script>
     <script src="~/src/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="~/src/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    @*moved this to top, uncomment if causes issues
+    <script src="~/src/vendor/jquery/jquery.min.js"></script>*@
 
     <!-- Custom scripts for all pages-->
     <script src="~/src/js/sb-admin-2.min.js"></script>
