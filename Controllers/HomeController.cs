@@ -6,21 +6,24 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Lethal.Developer.Models;
+using Lethal.Developer.ViewModels;
+using Lethal.Developer.ViewProviders.Interfaces;
 
 namespace Lethal.Developer.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : RootController
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ITopicProvider topicProvider)
+            :base(topicProvider)
         {
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(new HomeViewModel());
         }
 
         public IActionResult Privacy()

@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 
 namespace Lethal.Developer.ViewModels
 {
-    public class TopicViewModel : BaseViewModel
+    public class HomeViewModel : BaseViewModel
     {
-        public string Name { get; set; }
     }
 }

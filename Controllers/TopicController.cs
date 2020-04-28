@@ -6,9 +6,11 @@ using Lethal.Developer.ViewProviders.Interfaces;
 using Lethal.Developer.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Lethal.Developer.Controllers
 {
+    //[Authorize]
     public class TopicController : Controller
     {
         private readonly ITopicProvider _topicProvider;

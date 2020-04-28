@@ -1,9 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@model Lethal.Developer.ViewModels.BaseViewModel
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Lethal.Developer</title>
+    @*<title>@Model.PageTitle</title>*@
 
     <!-- Custom fonts for this template-->
     <link href="~/src/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -18,6 +20,7 @@
 
 </head>
 <body id="page-top">
+    <h3>@Model.Poop</h3>
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
@@ -52,10 +55,18 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Question")">
-                    <i class="fas fa-fw fa-question-circle"></i>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
                     <span>Question Panel</span>
                 </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        @foreach(var t in Model.Topics)
+                        {
+                            <a class="collapse-item" href="login.html">@t.Name</a>
+                        }
+                    </div>
+                </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -150,7 +161,7 @@
     <script src="~/src/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     @*moved this to top, uncomment if causes issues
-    <script src="~/src/vendor/jquery/jquery.min.js"></script>*@
+        <script src="~/src/vendor/jquery/jquery.min.js"></script>*@
 
     <!-- Custom scripts for all pages-->
     <script src="~/src/js/sb-admin-2.min.js"></script>
