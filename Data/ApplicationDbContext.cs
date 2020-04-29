@@ -63,6 +63,14 @@ namespace Lethal.Developer.Data
                     .WithMany(p => p.Questions)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
+
+                entity.HasData(
+                    new Question
+                        {
+                            Id = 1, Q = "<p>What is an interface?</p>", A = ""
+                        }
+                    );
+
             });
 
             modelBuilder.Entity<Result>(entity =>

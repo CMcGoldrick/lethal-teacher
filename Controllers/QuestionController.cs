@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Lethal.Developer.ViewModels;
 using Lethal.Developer.ViewProviders.Interfaces;
 using Lethal.Developer.ViewProviders.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -16,9 +18,14 @@ namespace Lethal.Developer.Controllers
 
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var bvm = await BaseViewModel;
+            var qvm = new QuestionViewModel();
+
+            qvm.Topics = bvm.Topics;
+
+            return View(bvm);
         }
     }
 }

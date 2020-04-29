@@ -24,7 +24,11 @@ namespace Lethal.Developer.Controllers
         [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> Index()
         {
-            return View(await BaseViewModel);
+            var hvm = new HomeViewModel();
+            var bvm = await BaseViewModel;
+            hvm.Topics = bvm.Topics;
+
+            return View(hvm);
         }
 
         public IActionResult GetHome()
