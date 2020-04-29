@@ -21,7 +21,13 @@ namespace Lethal.Developer.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public async Task<IActionResult> Index()
+        {
+            return View(await BaseViewModel);
+        }
+
+        public IActionResult GetHome()
         {
             return View(new HomeViewModel());
         }

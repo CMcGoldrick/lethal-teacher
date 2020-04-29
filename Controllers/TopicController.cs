@@ -27,7 +27,7 @@ namespace Lethal.Developer.Controllers
             {
                 var userId = Guid.Parse("9776506B-8CFE-448F-1BF5-08D7DCE61A3B");
 
-                var topic = _topicProvider.GetAllTopics(userId);
+                var topic = _topicProvider.GetAllTopicsAsync(userId);
                 return PartialView("_TopicsPartial", topic);
             }
             catch (Exception ex)

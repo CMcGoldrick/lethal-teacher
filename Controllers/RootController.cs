@@ -18,25 +18,16 @@ namespace Lethal.Developer.Controllers
         }
 
         public string UserId => GetUserId();
-        public BaseViewModel BaseViewModel => GetBaseViewModel();
+        public Task<BaseViewModel> BaseViewModel => GetBaseViewModelAsync();
 
-        private BaseViewModel GetBaseViewModel()
+        private async Task<BaseViewModel> GetBaseViewModelAsync()
         {
             try
             {
                 var vm = new BaseViewModel();
-                var topicList = new List<TopicViewModel>();
-                var topics = _topicProvider.GetAllTopics(Guid.Parse(UserId));
-
-                foreach(var t in topics)
-                {
-                    topicList.Add(new TopicViewModel
-                    {
-                        Name = t.Name
-                    });
-                }
-
-                vm.Topics = topicList;
+                var topics = await _topicProvider.GetAllTopicsAsync(Guid.Parse(UserId));
+                vm.Topics = topics;
+                vm.Poop = 6;
 
                 return vm;
             }

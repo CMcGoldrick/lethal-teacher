@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Lethal.Developer.DataAccess.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Lethal.Developer.DataAccess.Services
 {
@@ -18,13 +19,13 @@ namespace Lethal.Developer.DataAccess.Services
             _serviceProvider = serviceProvider;
         }
 
-        public IEnumerable<Topic> GetAllTopics(Guid userId)
+        public async Task<IEnumerable<Topic>> GetAllTopicsAsync(Guid userId)
         {
             try
             {
                 var db = _serviceProvider.GetService<ApplicationDbContext>();
 
-                var topic = db.Topics;
+                var topic = await db.Topics.ToListAsync();
 
                 return topic;
             }

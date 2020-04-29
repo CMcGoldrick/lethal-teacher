@@ -8,6 +8,6 @@ namespace Lethal.Developer.DataAccess.Interfaces
 {
     public interface ITopicRepository
     {
-        IEnumerable<Topic> GetAllTopics(Guid userId);
+        Task<IEnumerable<Topic>> GetAllTopicsAsync(Guid userId);
     }
 }

@@ -17,11 +17,11 @@ namespace Lethal.Developer.ViewProviders.Services
 			_topicRepository = topicRepository;
 		}
 
-		public IEnumerable<TopicViewModel> GetAllTopics(Guid userId)
+		public async Task <IEnumerable<TopicViewModel>> GetAllTopicsAsync(Guid userId)
         {
 			try
 			{
-				var topics = _topicRepository.GetAllTopics(userId);
+				var topics = await _topicRepository.GetAllTopicsAsync(userId);
 				var tvm = new List<TopicViewModel>();
 				
 				foreach(var t in topics)
