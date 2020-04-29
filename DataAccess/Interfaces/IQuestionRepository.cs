@@ -9,5 +9,6 @@ namespace Lethal.Developer.DataAccess.Interfaces
     public interface IQuestionRepository
     {
         void CreateQuestion(Guid userId, Question Question);
+        Task<IEnumerable<Question>> GetQuestionsByTopicAsync(Guid userId, int topicId);
     }
 }

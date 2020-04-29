@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace Lethal.Developer.DataAccess.Services
 {
@@ -20,9 +21,30 @@ namespace Lethal.Developer.DataAccess.Services
 
         public void CreateQuestion(Guid userId, Question Question)
         {
-            var db = _serviceProvider.GetService<ApplicationDbContext>();
-
-            var q = db.Questions;
+            try
+            {
+                var db = _serviceProvider.GetService<ApplicationDbContext>();
+                var questions = db.Questions;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
+
+        public async Task<IEnumerable<Question>> GetQuestionsByTopicAsync(Guid userId, int topicId)
+        {
+            try
+            {
+                return await _serviceProvider.GetService<ApplicationDbContext>().Questions
+                    .Where(q => q.UserId == userId && q.TopicId == topicId).ToListAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }

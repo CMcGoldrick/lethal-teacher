@@ -12,20 +12,34 @@ namespace Lethal.Developer.Controllers
 {
     public class QuestionController : RootController
     {
-        public QuestionController(ITopicProvider topicProvider)
+        IQuestionProvider _questionProvider; 
+
+        public QuestionController(ITopicProvider topicProvider, IQuestionProvider questionProvider)
             : base(topicProvider)
         {
-
+            _questionProvider = questionProvider;
         }
 
         public async Task<IActionResult> Index()
         {
-            var bvm = await BaseViewModel;
             var qvm = new QuestionViewModel();
-
+            var bvm = await BaseViewModel;
             qvm.Topics = bvm.Topics;
 
             return View(bvm);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetQuestions(int topicId)
+        {
+            var qvm = new QuestionViewModel();
+            var bvm = await BaseViewModel;
+            var questions = await _questionProvider.GetQuestionsByTopicAsync(UserId, topicId);
+            
+            qvm.Topics = bvm.Topics;
+            qvm.Questions = questions;
+
+            return View(questions);
         }
     }
 }

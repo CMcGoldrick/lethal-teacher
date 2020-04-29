@@ -168,4 +168,3 @@ C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\Microsof
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.csproj.CoreCompileInputs.cache
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.csprojAssemblyReference.cache

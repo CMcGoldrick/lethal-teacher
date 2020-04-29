@@ -17,7 +17,7 @@ namespace Lethal.Developer.Controllers
             _topicProvider = topicProvider;
         }
 
-        public string UserId => GetUserId();
+        public Guid UserId => GetUserId();
         public Task<BaseViewModel> BaseViewModel => GetBaseViewModelAsync();
 
         private async Task<BaseViewModel> GetBaseViewModelAsync()
@@ -25,9 +25,8 @@ namespace Lethal.Developer.Controllers
             try
             {
                 var vm = new BaseViewModel();
-                var topics = await _topicProvider.GetAllTopicsAsync(Guid.Parse(UserId));
+                var topics = await _topicProvider.GetAllTopicsAsync(UserId);
                 vm.Topics = topics;
-                vm.Poop = 6;
 
                 return vm;
             }
@@ -38,7 +37,7 @@ namespace Lethal.Developer.Controllers
             }
         }
 
-        private string GetUserId()
+        private Guid GetUserId()
         {
             //if (Misc.IsLocal(HttpContext.Connection))
             //    //Do NOT CHANGE THIS.
@@ -58,7 +57,7 @@ namespace Lethal.Developer.Controllers
             //return string.IsNullOrEmpty(userId) ? null : userId;
 
             //Do NOT CHANGE THIS.
-            return "9776506B-8CFE-448F-1BF5-08D7DCE61A3B";
+            return Guid.Parse("9776506B-8CFE-448F-1BF5-08D7DCE61A3B");
         }
 
     }

@@ -21,13 +21,3 @@
     </script>
 </form>
 
-
-<script>
-    $(document).ready(function() {
-    var url = "@Url.Action("Index","Topic")";
-
-        $.get(url, function (data) {
-            $('#topics').html(data);
-        });
-    });
-</script>

@@ -64,13 +64,10 @@ namespace Lethal.Developer.Data
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
 
-                entity.HasData(
-                    new Question
-                        {
-                            Id = 1, Q = "<p>What is an interface?</p>", A = ""
-                        }
-                    );
+                //entity.HasData(
+                //        new Question { Id = 1, Q = "<p>What is an interface?</p>", A = "", TopicId = 1}
 
+                //    );
             });
 
             modelBuilder.Entity<Result>(entity =>

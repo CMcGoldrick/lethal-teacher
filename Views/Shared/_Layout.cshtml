@@ -51,7 +51,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         @foreach (var t in Model.Topics)
                         {
-                            <a class="collapse-item" href="login.html">@t.Name</a>
+                            <a class="collapse-item" href="@Url.Action("GetQuestions", "Question", new { id = t.Id })">@t.Name</a>
                         }
                     </div>
                 </div>

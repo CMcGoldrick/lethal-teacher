@@ -26,7 +26,7 @@ namespace Lethal.Developer.ViewProviders.Services
 				
 				foreach(var t in topics)
 				{
-					tvm.Add(new TopicViewModel { Name = t.Name });
+					tvm.Add(new TopicViewModel { Id = t.Id, Name = t.Name});
 				}
 
 				return tvm;

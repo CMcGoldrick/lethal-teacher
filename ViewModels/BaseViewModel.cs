@@ -8,8 +8,6 @@ namespace Lethal.Developer.ViewModels
 {
     public class BaseViewModel
     {
-        //public IEnumerable<Topic> Topics { get; set; }
-        public int Poop { get; set; }
         public String PageTitle { get; set; }
         public String MetaKeywords { get; set; }
         public String MetaDescription { get; set; }
