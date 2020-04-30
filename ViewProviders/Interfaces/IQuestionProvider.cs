@@ -8,6 +8,7 @@ namespace Lethal.Developer.ViewProviders.Interfaces
 {
     public interface IQuestionProvider
     {
-        Task<IEnumerable<Question>> GetQuestionsByTopicAsync(Guid userId, int topicIc); 
+        Task CreateQuestionAsync(Guid userId, CreateQuestionViewModel question);
+        Task<QuestionViewModel> GetQuestionsByTopicAsync(Guid userId, int topicId);
     }
 }

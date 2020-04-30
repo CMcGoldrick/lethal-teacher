@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Lethal.Developer.Helpers.HttpResponseMessages;
 using Lethal.Developer.ViewModels;
 using Lethal.Developer.ViewProviders.Interfaces;
 using Lethal.Developer.ViewProviders.Services;
@@ -29,18 +30,31 @@ namespace Lethal.Developer.Controllers
             return View(bvm);
         }
 
+        [HttpPost]
+        [Route("questions/create")]
+        public async Task<IActionResult> CreateQuestion([FromBody] CreateQuestionViewModel question)
+        {
+            try
+            {
+                await _questionProvider.CreateQuestionAsync(UserId, question);
+                return Ok(Post.Success("question"));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+                throw;
+            }
+        }
+
         [HttpGet]
         [Route("questions/{topicId}")]
         public async Task<IActionResult> QuestionsByTopic(int topicId)
         {
-            var qvm = new QuestionViewModel();
+            var questions = await _questionProvider.GetQuestionsByTopicAsync(UserId, topicId);         
             var bvm = await BaseViewModel;
-            var questions = await _questionProvider.GetQuestionsByTopicAsync(UserId, topicId);
+            questions.Topics = bvm.Topics;
             
-            qvm.Topics = bvm.Topics;
-            qvm.Questions = questions;
-
-            return View(qvm);
+            return View(questions);
         }
 
     }

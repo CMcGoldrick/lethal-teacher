@@ -7,6 +7,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+using System.Runtime.InteropServices.ComTypes;
+using System.Data.Common;
 
 namespace Lethal.Developer.DataAccess.Services
 {
@@ -19,14 +22,17 @@ namespace Lethal.Developer.DataAccess.Services
             _serviceProvider = serviceProvider;
         }
 
-        public void CreateQuestion(Guid userId, Question Question)
+        public async Task CreateQuestionAsync(Question question)
         {
             try
             {
                 var db = _serviceProvider.GetService<ApplicationDbContext>();
-                var questions = db.Questions;
+
+                db.Questions.Add(question);
+
+                await db.SaveChangesAsync();
             }
-            catch (Exception)
+            catch (DbException dbex)
             {
                 throw;
             }
@@ -36,8 +42,13 @@ namespace Lethal.Developer.DataAccess.Services
         {
             try
             {
-                return await _serviceProvider.GetService<ApplicationDbContext>().Questions
+                var db = _serviceProvider.GetService<ApplicationDbContext>();
+
+                var questions = await db.Questions
+                    .Include(t => t.Topic)
                     .Where(q => q.UserId == userId && q.TopicId == topicId).ToListAsync();
+
+                return questions;
             }
             catch (Exception)
             {

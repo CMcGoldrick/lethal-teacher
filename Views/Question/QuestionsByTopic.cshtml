@@ -2,9 +2,14 @@
 
 @{
     ViewData["Title"] = "Detail";
+    var cardcollapseId = "#collapseCardExample";
+    var collapse = "collapseCardExample";
+    var index = 0;
 }
 
-@*TODO: Code snippet plugin https://ckeditor.com/cke4/addon/codesnippet*@
+
+<h1>@Model.TopicName</h1>
+
 <form>
     <textarea name="editor1" id="editor1" rows="10" cols="80"></textarea>
     <script>
@@ -14,10 +19,62 @@
     </script>
 </form>
 
+<button onclick="createQuestion()" class="btn-success">
+    Create Question
+</button>
+
+@foreach(var item in Model.Questions)
+{
+    <div class="card shadow mb-4">
+        <!-- Card Header - Accordion -->
+        <a href="@(cardcollapseId + index)" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="@(collapse + index)">
+            <h6 class="m-0 font-weight-bold text-primary">@Html.Raw(item.Q)</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse" id="@(collapse + index)">
+            <div class="card-body">
+                @Html.Raw(item.A)
+            </div>
+        </div>
+    </div>
+    index++;
+}
+
+@*<div>@Html.Raw(Model.Questions.FirstOrDefault().Q)</div>
+<div>@Html.Raw(Model.Questions.FirstOrDefault().A)</div>*@
 
 
+<script>
+    function createQuestion() {
+        var iframe = document.getElementsByTagName("iframe")[0];
+        var html = iframe.contentWindow.document.getElementsByTagName("html")[0];
+        var body = html.getElementsByTagName("body")[0];
+        var insideBody = body.querySelectorAll('body > *');
+        var returnHtml = "";
 
-<h1>@Html.Raw(Model.Questions.FirstOrDefault().Q)</h1>
-<h1>@Html.Raw(Model.Questions.FirstOrDefault().A)</h1>
+        insideBody.forEach(x => returnHtml += x.outerHTML);
 
+        var data = {
+            Question: "what is this baby?",
+            Answer: returnHtml,
+            TopicId: @Model.TopicId
+        };
+
+        $.ajax({
+            type: "POST",
+            url: '/questions/create',
+            //headers: {
+            //    'Authorization': `Bearer ${token}`,
+            //},
+            datatype: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (result) {
+                window.location.reload();
+            },
+            error: function (error) {
+            }
+        })
+    }
+</script>
 

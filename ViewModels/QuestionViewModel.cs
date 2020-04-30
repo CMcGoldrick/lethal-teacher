@@ -8,8 +8,9 @@ namespace Lethal.Developer.ViewModels
 {
     public class QuestionViewModel : BaseViewModel
     {
+        public int TopicId { get; set; }
+        public string TopicName { get; set; }
         public IEnumerable<Question> Questions { get; set; }
-
     }
 
     public class Question
