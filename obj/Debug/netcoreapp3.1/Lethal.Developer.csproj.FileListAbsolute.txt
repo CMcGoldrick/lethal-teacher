@@ -7,10 +7,6 @@ C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\appsetti
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\package-lock.json
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\package.json
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\src\vendor\ckeditor4\bower.json
-C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\src\vendor\ckeditor4\composer.json
-C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\src\vendor\ckeditor4\package.json
-C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\src\vendor\ckeditor4\plugins\emoji\emoji.json
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\src\vendor\ckeditor4\samples\toolbarconfigurator\font\config.json
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\src\vendor\fontawesome-free\package.json
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\theme-styleguide\vendor\fontawesome-free\package.json
@@ -162,9 +158,10 @@ C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\staticwe
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.dll
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.pdb
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.genruntimeconfig.cache
-C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Question\Detail.cshtml.g.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Question\Create.cshtml.g.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\Microsoft.AspNet.Identity.Core.dll
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.csproj.CoreCompileInputs.cache
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.csprojAssemblyReference.cache
+C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Question\QuestionsByTopic.cshtml.g.cs

@@ -30,7 +30,8 @@ namespace Lethal.Developer.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetQuestions(int topicId)
+        [Route("questions/{topicId}")]
+        public async Task<IActionResult> QuestionsByTopic(int topicId)
         {
             var qvm = new QuestionViewModel();
             var bvm = await BaseViewModel;
@@ -39,7 +40,8 @@ namespace Lethal.Developer.Controllers
             qvm.Topics = bvm.Topics;
             qvm.Questions = questions;
 
-            return View(questions);
+            return View(qvm);
         }
+
     }
 }

@@ -91,13 +91,14 @@ namespace Lethal.Developer
 
                 endpoints.MapControllerRoute(
                     name: "question",
-                    pattern: "{controller=Question}/{action=Index}/{id?}");
+                    pattern: "{controller=Question}/{action=Index}/{topicId?}");
 
-                endpoints.MapControllerRoute(
-                    name: "getquestion",
-                    pattern: "{controller=Question}/{action=GetQuestions}/{topicId?}");
+                //endpoints.MapControllerRoute(
+                //    name: "getquestion",
+                //    pattern: "{controller=Question}/{action=GetQuestions}/{topicId?}");
 
                 endpoints.MapRazorPages();
+                //endpoints.MapControllers();
             });
 
 
