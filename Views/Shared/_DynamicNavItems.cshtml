@@ -1,0 +1,33 @@
+﻿@model Lethal.Developer.ViewModels.BaseViewModel
+
+<!-- Nav Item - Topics Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Question Panel</span>
+    </a>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            @foreach (var t in Model.Topics)
+            {
+                <a class="collapse-item" href="@Url.Action("QuestionsByTopic", "Question", new { topicId = t.Id })">@t.Name</a>
+            }
+        </div>
+    </div>
+</li>
+
+<!-- Nav Item - Exams Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <i class="fas fa-fw fa-wrench"></i>
+        <span>Exam Panel</span>
+    </a>
+    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            @foreach (var t in Model.Topics)
+            {
+                <a class="collapse-item" href="login.html">@t.Name</a>
+            }
+        </div>
+    </div>
+</li>

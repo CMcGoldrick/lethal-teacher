@@ -160,8 +160,10 @@ C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.D
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.genruntimeconfig.cache
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Question\Create.cshtml.g.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\Microsoft.AspNet.Identity.Core.dll
+C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.csprojAssemblyReference.cache
+C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Question\QuestionsByTopic.cshtml.g.cs
+C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DynamicNavItems.cshtml.g.cs
+C:\Users\13127\Documents\repos\Lethal.Developer\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.csproj.CoreCompileInputs.cache
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Lethal.Developer.csprojAssemblyReference.cache
-C:\Users\13127\Documents\repos\Lethal.Developer\obj\Debug\netcoreapp3.1\Razor\Views\Question\QuestionsByTopic.cshtml.g.cs

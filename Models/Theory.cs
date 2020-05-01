@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Lethal.Developer.Users.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,7 +20,7 @@ namespace Lethal.Developer.Models
         public DateTime CreatedDate { get; set; }
 
         [ForeignKey("UserId")]
-        public ApplicationUser User { get; set; }
+        public User User { get; set; }
 
         [ForeignKey("TopicId")]
         public Topic Topic { get; set; }
